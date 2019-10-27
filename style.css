@@ -24,6 +24,15 @@ body {
   width: 100%;
   position: absolute;
   top: 977px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .container .pr-list {
@@ -44,6 +53,8 @@ body {
   width: 300px;
   height: 200px;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -53,6 +64,22 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.container .pr-list .pr:first-child::before {
+  opacity: 0;
+}
+
+.container .pr-list .pr::before {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  content: '';
+  width: 1px;
+  height: 140px;
+  background-color: #E1E7FF;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .container .pr-list .pr::after {
@@ -132,6 +159,14 @@ body {
           transition-delay: 0.08s;
 }
 
+.container .pr-list .pr:hover + .pr::before {
+  opacity: 0;
+}
+
+.container .pr-list .pr:hover::before {
+  opacity: 0;
+}
+
 .container .pr-list .pr:hover::after {
   -webkit-box-shadow: 0px 1px 2px #B3B6D1, 0px 1px 5px rgba(179, 182, 209, 0.5);
           box-shadow: 0px 1px 2px #B3B6D1, 0px 1px 5px rgba(179, 182, 209, 0.5);
@@ -166,6 +201,11 @@ body {
 .container .pr-list .pr:hover .pr-2 i {
   -webkit-transform: translateX(0);
           transform: translateX(0);
+}
+
+.container .pr-list .pr:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
 }
 
 .container .pr-list .pr .pr-2 {
