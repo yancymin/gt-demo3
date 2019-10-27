@@ -26,10 +26,14 @@ body {
     width: 100%;
     position: absolute;
     top: 977px;
-    @include flex();
+
+    @include flex() {
+        flex-direction: column;
+    }
 
 
     .pr-list {
+        z-index: 100;
         width: 1200px;
         @include flex();
 
@@ -262,4 +266,45 @@ body {
             }
         }
     }
+
+    .motions {
+        top: 260px;
+        position: absolute;
+        width: 100vw;
+        background: linear-gradient(0deg, #F7F9FC 17.23%, rgba(252, 253, 254, 0.0001) 88.99%);
+        @include flex();
+        overflow-y: hidden;
+
+        .motion-wrap {
+            position: relative;
+            width: 1200px;
+            height: 500px;
+            @include flex();
+
+            .pr-motion-1 {
+                left: 12%;
+                z-index: 100;
+                bottom: -10%;
+            }
+
+            .pr-motion-2 {
+                bottom: -4%;
+            }
+
+            .pr-motion-3 {
+                z-index: 100;
+                right: 11%;
+                bottom: 5%;
+            }
+
+
+            .pr-motion-1,
+            .pr-motion-2,
+            .pr-motion-3 {
+                position: absolute;
+            }
+        }
+
+    }
+
 }

@@ -33,9 +33,14 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .container .pr-list {
+  z-index: 100;
   width: 1200px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -327,5 +332,60 @@ body {
   transition: all 0.16s ease-out;
   -webkit-transition-delay: 0.02s;
           transition-delay: 0.02s;
+}
+
+.container .motions {
+  top: 260px;
+  position: absolute;
+  width: 100vw;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(17.23%, #F7F9FC), color-stop(88.99%, rgba(252, 253, 254, 0.0001)));
+  background: linear-gradient(0deg, #F7F9FC 17.23%, rgba(252, 253, 254, 0.0001) 88.99%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow-y: hidden;
+}
+
+.container .motions .motion-wrap {
+  position: relative;
+  width: 1200px;
+  height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .motions .motion-wrap .pr-motion-1 {
+  left: 12%;
+  z-index: 100;
+  bottom: -10%;
+}
+
+.container .motions .motion-wrap .pr-motion-2 {
+  bottom: -4%;
+}
+
+.container .motions .motion-wrap .pr-motion-3 {
+  z-index: 100;
+  right: 11%;
+  bottom: 5%;
+}
+
+.container .motions .motion-wrap .pr-motion-1,
+.container .motions .motion-wrap .pr-motion-2,
+.container .motions .motion-wrap .pr-motion-3 {
+  position: absolute;
 }
 /*# sourceMappingURL=style.css.map */
