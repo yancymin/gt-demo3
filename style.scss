@@ -282,8 +282,9 @@ body {
             @include flex();
 
             .pr-motion-1 {
+                width: 210px;
                 left: 12%;
-                z-index: 100;
+                z-index: 1;
                 bottom: -10%;
             }
 
@@ -292,7 +293,7 @@ body {
             }
 
             .pr-motion-3 {
-                z-index: 100;
+                z-index: 1;
                 right: 11%;
                 bottom: 5%;
             }
@@ -302,9 +303,19 @@ body {
             .pr-motion-2,
             .pr-motion-3 {
                 position: absolute;
+                transition: all 0.3s ease;
             }
         }
 
     }
 
+}
+
+#svgBtn {
+    transform-origin: center;
+}
+
+#success {
+    opacity: 0;
+    transform-origin: center;
 }
