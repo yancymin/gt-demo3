@@ -2,91 +2,254 @@ const prList = document.querySelectorAll('.pr')
 const svg1 = document.querySelector('#pr-motion-1')
 const svg2 = document.querySelector('#pr-motion-2')
 const svg3 = document.querySelector('#pr-motion-3')
+var text = document.querySelector('#text')
+var btn = document.querySelector('#svgBtn')
+var success = document.querySelector('#success')
 var tl = new TimelineMax()
-var textTl = new TimelineMax()
+var tl2 = new TimelineMax()
 
-var duration = 0.2
+var duration = 0.15
 
 prList[0].addEventListener('mouseenter', e => {
-  var text = document.querySelector('#text')
-  var btn = document.querySelector('#svgBtn')
-  var success = document.querySelector('#success')
-
-  tl.to(svg1, duration, {
+  TweenMax.set(svg1, {
     boxShadow: '15px 20px 14px rgba(71, 84, 119, 0.2)'
   })
-  tl.to(svg1, duration - 0.1, {
-    bottom: -25,
-    ease: Power1.easeInOut,
-    transform: 'scale(1.08)'
-  })
-    .to([svg2, svg3], duration, {
-      opacity: 0.7,
-      transform: 'scale(0.98)'
-    })
-    .to(success, duration, {
-      opacity: 0,
-      transform: 'scale(0.4)',
-      delay: 0.3,
-      ease: Power1.easeOut
-    })
-    .to(success, duration, {
-      opacity: 1,
-      transform: 'scale(1)',
-      delay: 0.2,
-      ease: Power1.easeOut
-    })
 
-  textTl
-    .to(text, duration + 0.2, {
+  tl2
+    .to(
+      svg1,
+      duration - 0.1,
+      {
+        bottom: -40,
+        ease: Power1.easeInOut,
+        transform: 'scale(1.05)'
+      },
+      '-=0.2'
+    )
+    .to(
+      [svg2, svg3],
+      duration,
+      {
+        opacity: 0.75,
+        transform: 'scale(0.96)',
+        filter: 'blur(2px)',
+        onComplete: function() {
+          tl2.pause()
+        }
+      },
+      '-=0.3'
+    )
+
+  tl.to(
+    text,
+    duration + 0.2,
+    {
       fill: 'none',
       transform: 'translateX(-10px) '
-    })
-    .to(text, duration + 0.2, {
-      delay: 0.2,
-      fill: '#99B6E5',
-      transform: 'translateX(0) '
-    })
+    },
+    '-=0.3'
+  )
+    .to(
+      text,
+      duration + 0.2,
+      {
+        delay: 0.2,
+        fill: '#99B6E5',
+        transform: 'translateX(0) '
+      },
+      '-=0.3'
+    )
+    .to(
+      btn,
+      duration - 0.1,
+      {
+        transform: 'scale(0.8)',
+        ease: Power1.easeInOut
+      },
+      '-=0.1'
+    )
     .to(btn, duration, {
-      transform: 'scale(0.8)',
-      ease: Power1.easeInOut
+      transform: 'scale(1)'
     })
-    .to(btn, duration - 0.2, {
-      transform: 'scale(1)',
-      ease: Power1.easeInOut
+    .to(
+      [btn, text, '#textBg'],
+      duration,
+      {
+        opacity: 0
+      },
+      '+=0.3'
+    )
+    .to(
+      success,
+      0.1,
+      {
+        opacity: 0,
+        transform: 'scale(0.4)',
+        ease: Power3.easeOut
+      },
+      '-=0.3'
+    )
+    .to(
+      success,
+      0.1,
+      {
+        opacity: 1,
+        transform: 'scale(1)',
+        ease: Power3.easeOut
+      },
+      '-=0.1'
+    )
+    .to([svg2, svg3, '#success', text, '#svgBtn', '#textBg'], duration, {
+      delay: 1
     })
-    .to([btn, text, '#textBg'], duration, {
-      opacity: 0
-    })
+
+  tl.repeat(10)
+  tl2.restart()
 })
 
 prList[0].addEventListener('mouseleave', e => {
-  tl.to([svg1, svg2, svg3, '#success'], 0.2, {
+  tl.to([svg1, svg2, svg3, '#success', text, '#svgBtn', '#textBg'], 0.2, {
+    clearProps: 'all'
+  })
+  tl2.to([svg1, svg2, svg3, '#success', text, '#svgBtn', '#textBg'], 0.2, {
     clearProps: 'all'
   })
 
-  textTl.to([text, '#svgBtn', '#textBg'], duration, {
-    clearProps: 'all'
-  })
+  tl.repeat(false)
 })
 
-var tl2 = new TimelineMax()
+var tl3 = new TimelineMax()
+var tl33 = new TimelineMax()
 
 prList[1].addEventListener('mouseenter', e => {
-  tl2
-    .to(svg2, duration, {
-      bottom: -6,
-      zIndex: 999,
-      boxShadow: '0 20px 14px rgba(71, 84, 119, 0.2)'
-    })
+  tl33
     .to([svg1, svg3], duration, {
-      opacity: 0.7,
-      transform: 'scale(0.98)'
+      opacity: 0,
+      transform: 'scale(0.98)',
+      filter: 'blur(2px)',
+      ease: Power0.easeIn
     })
+    .to(
+      [svg1, svg3],
+      duration,
+      {
+        opacity: 0.6,
+        transform: 'scale(0.98)',
+        zIndex: 0,
+        ease: Power0.easeIn
+      },
+      '-=0.1'
+    )
+    .to(
+      svg2,
+      duration - 0.5,
+      {
+        bottom: -6,
+        zIndex: 999,
+        boxShadow: '0 20px 14px rgba(71, 84, 119, 0.2)'
+      },
+      '-=0.1'
+    )
+
+  tl3
+    .to('#defaultBtn', duration, {
+      delay: 0.3,
+      opacity: 1,
+      transform: 'scale(0.96)',
+      ease: Power3.easeOut
+    })
+    .to('#defaultBtn', duration - 0.1, {
+      opacity: 0,
+      ease: Power3.easeOut,
+      transform: 'scale(1)'
+    })
+    .to('#success2', duration - 0.1, {
+      opacity: 1,
+      transform: 'scale(0.96)'
+    })
+    .to('#success2', duration + 0.3, {
+      opacity: 1,
+      transform: 'scale(1)'
+    })
+
+  tl3.timeScale(0.5)
+  tl3.repeat(10)
 })
 
 prList[1].addEventListener('mouseleave', e => {
-  tl2.to([svg1, svg2, svg3], 0.2, {
+  tl33.to([svg1, svg2, svg3], 0.2, {
     clearProps: 'all'
   })
+  tl3.to(['#success2', '#defaultBtn'], 0.2, {
+    clearProps: 'all'
+  })
+  tl3.repeat(false)
+})
+
+var tl4 = new TimelineMax()
+
+prList[2].addEventListener('mouseenter', e => {
+  tl4
+    .to([svg1, svg2], duration - 0.1, {
+      opacity: 0.9,
+      transform: 'scale(0.98)',
+      filter: 'blur(2px)'
+    })
+    .to(svg3, duration - 0.05, {
+      bottom: '13%',
+      zIndex: 999,
+      boxShadow: '-20px 10px 14px rgba(71, 84, 119, 0.2)'
+    })
+
+  document.getElementById('scaner').classList.add('scanerTransf')
+  document.getElementById('pass').classList.add('passMotion')
+
+  var dots = document.getElementsByClassName('dot')
+  var num = Math.floor(Math.random() * (dots.length - 1))
+
+  for (num; num <= dots.length; num++) {
+    dots[num].classList.add('dots')
+  }
+})
+
+prList[2].addEventListener('mouseleave', e => {
+  tl4.to([svg1, svg2, svg3], 0.2, {
+    clearProps: 'all'
+  })
+  document.getElementById('scaner').classList.remove('scanerTransf')
+  document.getElementById('pass').classList.remove('passMotion')
+
+  var dots = document.getElementsByClassName('dot')
+  for (var i = 0; i <= dots.length; i++) {
+    dots[i].classList.remove('dots')
+  }
+})
+
+var tl5 = new TimelineMax()
+
+prList[3].addEventListener('mouseenter', e => {
+  TweenMax.set(svg1, {
+    transformOrigin: 'right center',
+    transform: 'scale(0.8) translateX(70px) translateY(70px)'
+  })
+  TweenMax.set(svg2, {
+    transformOrigin: 'center center',
+    transform: 'scale(0.8) translateY(40px)'
+  })
+  TweenMax.set(svg3, {
+    transformOrigin: 'left center',
+    transform: 'scale(0.75) translateX(-110px) translateY(70px)'
+  })
+  //   tl5.to([svg1, svg2, svg3], duration, {
+  //     transform: 'scale(0.6)'
+  //   })
+
+  document.getElementById('wave').classList.add('waveShow')
+})
+
+prList[3].addEventListener('mouseleave', e => {
+  TweenMax.set([svg1, svg2, svg3], {
+    clearProps: 'all'
+  })
+  document.getElementById('wave').classList.remove('waveShow')
 })

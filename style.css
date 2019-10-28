@@ -335,7 +335,7 @@ body {
 }
 
 .container .motions {
-  top: 260px;
+  top: 240px;
   position: absolute;
   width: 100vw;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(17.23%, #F7F9FC), color-stop(88.99%, rgba(252, 253, 254, 0.0001)));
@@ -381,7 +381,9 @@ body {
 .container .motions .motion-wrap .pr-motion-3 {
   z-index: 1;
   right: 11%;
-  bottom: 5%;
+  bottom: 10%;
+  height: 214px;
+  border-radius: 18px;
 }
 
 .container .motions .motion-wrap .pr-motion-1,
@@ -390,16 +392,180 @@ body {
   position: absolute;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  will-change: transform;
 }
 
 #svgBtn {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
   -webkit-transform-origin: center;
           transform-origin: center;
+  will-change: transform;
 }
 
 #success {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
   opacity: 0;
   -webkit-transform-origin: center;
           transform-origin: center;
+  will-change: transform;
 }
+
+#success2 {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  opacity: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  will-change: transform;
+}
+
+#scaner {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  opacity: 0;
+  will-change: transform;
+}
+
+#defaultBtn {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  will-change: transform;
+}
+
+.scanerTransf {
+  opacity: 1 !important;
+  -webkit-animation: move 2s ease infinite forwards;
+          animation: move 2s ease infinite forwards;
+}
+
+@-webkit-keyframes move {
+  from {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+  }
+  to {
+    -webkit-transform: translateY(240px);
+            transform: translateY(240px);
+  }
+}
+
+@keyframes move {
+  from {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+  }
+  to {
+    -webkit-transform: translateY(240px);
+            transform: translateY(240px);
+  }
+}
+
+.dot {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.dots {
+  -webkit-animation: dots 2s ease infinite both;
+          animation: dots 2s ease infinite both;
+}
+
+@-webkit-keyframes dots {
+  0%,
+  100% {
+    stroke-width: 4.96552;
+    stroke: #9a9abc;
+  }
+  50% {
+    stroke-width: 6;
+    stroke: #e0e0ea;
+  }
+}
+
+@keyframes dots {
+  0%,
+  100% {
+    stroke-width: 4.96552;
+    stroke: #9a9abc;
+  }
+  50% {
+    stroke-width: 6;
+    stroke: #e0e0ea;
+  }
+}
+
+.passMotion {
+  -webkit-animation: pass 0.7s ease forwards 0.8s;
+          animation: pass 0.7s ease forwards 0.8s;
+}
+
+@-webkit-keyframes pass {
+  from {
+    stroke-dashoffset: 24px;
+    stroke-dasharray: 24px;
+  }
+  to {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 24px;
+  }
+}
+
+@keyframes pass {
+  from {
+    stroke-dashoffset: 24px;
+    stroke-dasharray: 24px;
+  }
+  to {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 24px;
+  }
+}
+
+#wave {
+  opacity: 0;
+  position: absolute;
+  width: 1300px;
+  -webkit-transform: scale(1) translateY(50px);
+          transform: scale(1) translateY(50px);
+  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#wave svg {
+  position: relative;
+  z-index: 100;
+}
+
+#wave svg:first-child {
+  left: 260px;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+#wave svg:last-child {
+  left: -290px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.waveShow {
+  opacity: 1 !important;
+  -webkit-transform: scale(1.4) translateY(50px) !important;
+          transform: scale(1.4) translateY(50px) !important;
+}
+
+/*********** motion ************/
 /*# sourceMappingURL=style.css.map */
