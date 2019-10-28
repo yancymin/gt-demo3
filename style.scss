@@ -170,6 +170,20 @@ body {
 
                     i {
                         transform: translateX(0);
+                        // animation: arrowMotion 0.8s infinite ease-in-out forwards;
+
+                        // @keyframes arrowMotion {
+                        //     from {
+                        //         opacity: 1;
+                        //         transform: translateX(-10px);
+                        //     }
+
+                        //     to {
+                        //         opacity: 0;
+                        //         transform: translateX(0px);
+
+                        //     }
+                        // }
                     }
                 }
             }
