@@ -32,7 +32,7 @@ prList[0].addEventListener('mouseenter', e => {
       {
         opacity: 0.75,
         transform: 'scale(0.96)',
-        filter: 'blur(2px)',
+        filter: 'blur(12px)',
         onComplete: function() {
           tl2.pause()
         }
@@ -126,7 +126,7 @@ prList[1].addEventListener('mouseenter', e => {
     .to([svg1, svg3], duration, {
       opacity: 0,
       transform: 'scale(0.98)',
-      filter: 'blur(2px)',
+      filter: 'blur(12px)',
       ease: Power0.easeIn
     })
     .to(
@@ -193,7 +193,7 @@ prList[2].addEventListener('mouseenter', e => {
     .to([svg1, svg2], duration - 0.1, {
       opacity: 0.9,
       transform: 'scale(0.98)',
-      filter: 'blur(2px)'
+      filter: 'blur(12px)'
     })
     .to(svg3, duration - 0.05, {
       bottom: '13%',
