@@ -439,6 +439,7 @@ body {
 }
 
 #defaultBtn {
+  opacity: 1 !important;
   -webkit-transform-origin: center;
           transform-origin: center;
   will-change: transform;
