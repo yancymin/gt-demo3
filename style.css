@@ -610,5 +610,11 @@ body {
   }
 }
 
+.cardsHover {
+  -webkit-box-shadow: 0px 1px 2px #B3B6D1, 0px 1px 5px rgba(179, 182, 209, 0.5);
+          box-shadow: 0px 1px 2px #B3B6D1, 0px 1px 5px rgba(179, 182, 209, 0.5);
+  border-radius: 6px;
+}
+
 /*********** motion ************/
 /*# sourceMappingURL=style.css.map */
