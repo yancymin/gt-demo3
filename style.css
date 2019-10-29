@@ -403,14 +403,6 @@ body {
   will-change: transform;
 }
 
-#svgBtn {
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  -webkit-transform-origin: center;
-          transform-origin: center;
-  will-change: transform;
-}
-
 #success {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -614,6 +606,15 @@ body {
   -webkit-box-shadow: 0px 1px 2px #B3B6D1, 0px 1px 5px rgba(179, 182, 209, 0.5);
           box-shadow: 0px 1px 2px #B3B6D1, 0px 1px 5px rgba(179, 182, 209, 0.5);
   border-radius: 6px;
+}
+
+#avatar {
+  opacity: 0;
+}
+
+#svg1SuccessPath {
+  stroke-dashoffset: 32px;
+  stroke-dasharray: 30px;
 }
 
 /*********** motion ************/

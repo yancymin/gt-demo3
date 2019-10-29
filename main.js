@@ -7,7 +7,6 @@ var text = document.querySelector('#text')
 var btn = document.querySelector('#svgBtn')
 var success = document.querySelector('#success')
 var tl = new TimelineMax()
-var tl2 = new TimelineMax()
 var tl3 = new TimelineMax()
 var tl33 = new TimelineMax()
 var tl4 = new TimelineMax()
@@ -34,75 +33,48 @@ function prList1Enter() {
     filter: 'blur(12px)'
   })
 
-  tl.to(
-    text,
-    duration + 0.2,
-    {
-      fill: 'none',
-      transform: 'translateX(-10px) '
-    },
-    '-=0.3'
-  )
-    .to(
-      text,
-      duration + 0.2,
-      {
-        delay: 0.2,
-        fill: '#99B6E5',
-        transform: 'translateX(0) '
-      },
-      '-=0.3'
-    )
-    .to(
-      btn,
-      duration - 0.1,
-      {
-        transform: 'scale(0.8)',
-        ease: Power1.easeInOut
-      },
-      '-=0.1'
-    )
-    .to(btn, duration, {
-      transform: 'scale(1)'
+  tl.to('#svgBtn', duration, {
+    scale: 0.85,
+    delay: 1,
+    ease: Power1.easeOut,
+    transformOrigin: 'center'
+  })
+    .to('#svgBtn', duration, {
+      scale: 1
     })
-    .to(
-      [btn, text, '#textBg'],
-      duration,
-      {
-        opacity: 0
-      },
-      '+=0.3'
-    )
-    .to(
-      success,
-      0.1,
-      {
-        opacity: 0,
-        transform: 'scale(0.4)',
-        ease: Power3.easeOut
-      },
-      '-=0.3'
-    )
-    .to(
-      success,
-      0.1,
-      {
-        opacity: 1,
-        transform: 'scale(1)',
-        ease: Power3.easeOut
-      },
-      '-=0.1'
-    )
+    .to(['#svgBtn', text, '#textBg'], duration, {
+      opacity: 0
+    })
+    .to(success, 0, {
+      opacity: 0,
+      transform: 'scale(0.4)',
+      ease: Power3.easeOut
+    })
+    .to('#avatar', duration + 0.2, {
+      opacity: 1,
+    })
+    .to(success, 0.1, {
+      opacity: 1,
+      transform: 'scale(1)',
+      ease: Power3.easeOut
+    },'-=0.3')
+    .to('#svg1SuccessPath', duration + 0.2, {
+      strokeDashoffset: 0,
+      ease: Power2.easeOut
+    })
     .to([svg2, svg3, '#success', text, '#svgBtn', '#textBg'], duration, {
-      delay: 1
+      delay: 0.5
     })
 
-  tl.repeat(10)
+  tl.repeat(20)
 }
 function prList1Leave() {
-  TweenMax.set([svg1, svg2, svg3, '#success', text, '#svgBtn', '#textBg'], {
-    clearProps: 'all'
-  })
+  TweenMax.set(
+    [svg1, svg2, svg3, '#success', text, '#svgBtn', '#textBg', '#avatar'],
+    {
+      clearProps: 'all'
+    }
+  )
 
   tl.repeat(false)
   tl.clear()
@@ -160,7 +132,7 @@ function prList2Enter() {
     })
 
   tl3.timeScale(0.5)
-  tl3.repeat(10)
+  tl3.repeat(20)
 }
 
 function prList2Leave() {
@@ -207,8 +179,8 @@ function prList3Leave() {
   document.getElementById('pass').classList.remove('passMotion')
 
   dots.forEach(element => {
-      element.classList.remove('dots')
-  });
+    element.classList.remove('dots')
+  })
 }
 
 prList[3].addEventListener('mouseenter', prList4Enter)
