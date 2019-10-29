@@ -295,7 +295,20 @@ body {
             }
 
             .pr-motion-2 {
-                bottom: -4%;
+                @include flex();
+                bottom: -10px;
+
+                img {
+                    pointer-events: none;
+                    position: absolute;
+                    top: 18%;
+                    width: 250px;
+
+                    &:nth-of-type(2) {
+                        display: none;
+                    }
+                }
+
             }
 
             .pr-motion-3 {
