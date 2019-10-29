@@ -237,27 +237,27 @@ function prList4Leave() {
   document.getElementById('wave').classList.remove('waveShow')
 }
 
-svg1.addEventListener('mouseenter', () => {
-  prList1Enter()
-  prList[0].classList.add('cardsHover')
-})
-svg1.addEventListener('mouseleave', () => {
-  prList1Leave()
-  prList[0].classList.remove('cardsHover')
-})
-svg2.addEventListener('mouseenter', () => {
-  prList2Enter()
-  prList[1].classList.add('cardsHover')
-})
-svg2.addEventListener('mouseleave', () => {
-  prList2Leave()
-  prList[1].classList.remove('cardsHover')
-})
-svg3.addEventListener('mouseenter', () => {
-  prList3Enter()
-  prList[2].classList.add('cardsHover')
-})
-svg3.addEventListener('mouseleave', () => {
-  prList3Leave()
-  prList[2].classList.remove('cardsHover')
-})
+// svg1.addEventListener('mouseenter', () => {
+//   prList1Enter()
+//   prList[0].classList.add('cardsHover')
+// })
+// svg1.addEventListener('mouseleave', () => {
+//   prList1Leave()
+//   prList[0].classList.remove('cardsHover')
+// })
+// svg2.addEventListener('mouseenter', () => {
+//   prList2Enter()
+//   prList[1].classList.add('cardsHover')
+// })
+// svg2.addEventListener('mouseleave', () => {
+//   prList2Leave()
+//   prList[1].classList.remove('cardsHover')
+// })
+// svg3.addEventListener('mouseenter', () => {
+//   prList3Enter()
+//   prList[2].classList.add('cardsHover')
+// })
+// svg3.addEventListener('mouseleave', () => {
+//   prList3Leave()
+//   prList[2].classList.remove('cardsHover')
+// })
