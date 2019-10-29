@@ -8,17 +8,24 @@ var btn = document.querySelector('#svgBtn')
 var success = document.querySelector('#success')
 var gif = document.querySelector('#sensebot')
 var tl = new TimelineMax()
-var tl3 = new TimelineMax()
-var tl33 = new TimelineMax()
 var tl4 = new TimelineMax()
 var tl5 = new TimelineMax()
 
 var duration = 0.15
+var hidden = function(svgA, svgB) {
+  TweenMax.set([svgA, svgB], {
+    opacity: 0.4,
+    scale: 0.95,
+    filter: 'blur(8px)'
+  })
+}
 
 prList[0].addEventListener('mouseenter', prList1Enter)
 prList[0].addEventListener('mouseleave', prList1Leave)
 
 function prList1Enter() {
+  hidden(svg2, svg3)
+
   TweenMax.set(svg1, {
     boxShadow: '15px 20px 14px rgba(71, 84, 119, 0.2)'
   })
@@ -27,11 +34,6 @@ function prList1Enter() {
     bottom: -40,
     ease: Power1.easeInOut,
     transform: 'scale(1.05)'
-  })
-  TweenMax.set([svg2, svg3], {
-    opacity: 0.75,
-    transform: 'scale(0.95)',
-    filter: 'blur(12px)'
   })
 
   tl.to('#svgBtn', duration, {
@@ -64,10 +66,15 @@ function prList1Enter() {
       },
       '-=0.3'
     )
-    .to('#svg1SuccessPath', duration + 0.2, {
-      strokeDashoffset: 0,
-      ease: Power2.easeOut
-    })
+    .to(
+      '#svg1SuccessPath',
+      duration + 0.2,
+      {
+        strokeDashoffset: 0,
+        ease: Power2.easeOut
+      },
+      '+=0.08'
+    )
     .to([svg2, svg3, '#success', text, '#svgBtn', '#textBg'], duration, {
       delay: 0.5
     })
@@ -89,22 +96,14 @@ function prList1Leave() {
 prList[1].addEventListener('mouseenter', prList2Enter)
 prList[1].addEventListener('mouseleave', prList2Leave)
 function prList2Enter() {
+  hidden(svg1, svg3)
+
   TweenMax.set(svg2, {
     bottom: -6,
     zIndex: 4,
     boxShadow: '0 20px 14px rgba(71, 84, 119, 0.2)',
     ease: Power1.easeIn
   })
-
-  TweenMax.set([svg1, svg3], {
-    opacity: 0.75,
-    transform: 'scale(0.95)',
-    filter: 'blur(12px)'
-  })
-
-  //   TweenMax.set('#sensebot', {
-  //     display: 'block'
-  //   })
 
   gif.src = 'sensebot.gif'
 }
@@ -120,21 +119,43 @@ function prList2Leave() {
 prList[2].addEventListener('mouseenter', prList3Enter)
 prList[2].addEventListener('mouseleave', prList3Leave)
 
-function prList3Enter() {
-  tl4
-    .to([svg1, svg2], duration - 0.1, {
-      opacity: 0.9,
-      transform: 'scale(0.95)',
-      filter: 'blur(4px)'
-    })
-    .to(svg3, duration - 0.05, {
-      bottom: '13%',
-      zIndex: 999,
-      boxShadow: '-20px 10px 14px rgba(71, 84, 119, 0.2)'
-    })
+TweenMax.set('#scaner', {
+  transformOrigin: 'center',
+  y: -20
+})
 
-  document.getElementById('scaner').classList.add('scanerTransf')
-  document.getElementById('pass').classList.add('passMotion')
+function prList3Enter() {
+  hidden(svg1, svg2)
+
+  TweenMax.set(svg3, {
+    bottom: '13%',
+    zIndex: 999,
+    boxShadow: '-20px 10px 14px rgba(71, 84, 119, 0.2)'
+  })
+
+  tl4
+    .to('#scaner', duration + 1.6, {
+      y: 240
+    })
+    .to(
+      '#passBg',
+      duration,
+      {
+        fill: '#AAEEEA',
+        stroke: '#27C2B9'
+      },
+      '-=1'
+    )
+    .to(
+      '#pass',
+      duration,
+      {
+        stroke: '#27C2B9'
+      },
+      '-=1'
+    )
+
+  tl4.repeat(100)
 
   for (var i = 0; i <= dots.length; i++) {
     var j = Math.floor(Math.random() * i)
@@ -143,11 +164,16 @@ function prList3Enter() {
 }
 
 function prList3Leave() {
-  TweenMax.set([svg1, svg2, svg3], {
+  TweenMax.set([svg1, svg2, svg3, '#scaner', '#pass', '#passBg'], {
     clearProps: 'all'
   })
-  document.getElementById('scaner').classList.remove('scanerTransf')
-  document.getElementById('pass').classList.remove('passMotion')
+  tl4.repeat(false)
+  tl4.clear()
+
+  TweenMax.set('#scaner', {
+    transformOrigin: 'center',
+    y: -20
+  })
 
   dots.forEach(element => {
     element.classList.remove('dots')
@@ -156,6 +182,11 @@ function prList3Leave() {
 
 prList[3].addEventListener('mouseenter', prList4Enter)
 prList[3].addEventListener('mouseleave', prList4Leave)
+
+TweenMax.set('#bug', {
+    scale:  0.9,
+    opacity: 0
+})
 function prList4Enter() {
   TweenMax.set(svg1, {
     transformOrigin: 'right center',
@@ -170,14 +201,30 @@ function prList4Enter() {
     transform: 'scale(0.75) translateX(-110px) translateY(70px)'
   })
 
+
+
+  tl5.to('#bug',duration+0.2,{
+      scale: 1,
+      opacity: 1 ,
+      ease: Power1.easeIn
+  })
+
   document.getElementById('wave').classList.add('waveShow')
+  document.getElementById('bug').classList.add('bugMotion')
 }
 
 function prList4Leave() {
-  TweenMax.set([svg1, svg2, svg3], {
+  TweenMax.set([svg1, svg2, svg3,'#bug'], {
     clearProps: 'all'
   })
+
+  TweenMax.set('#bug', {
+    scale:  0.9,
+    opacity: 0
+})
+  
   document.getElementById('wave').classList.remove('waveShow')
+  document.getElementById('bug').classList.remove('bugMotion')
 }
 
 // svg1.addEventListener('mouseenter', () => {

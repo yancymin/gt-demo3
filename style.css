@@ -441,15 +441,6 @@ body {
   will-change: transform;
 }
 
-#scaner {
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  -webkit-transform-origin: center;
-          transform-origin: center;
-  opacity: 0;
-  will-change: transform;
-}
-
 #defaultBtn {
   opacity: 1 !important;
   -webkit-transform-origin: center;
@@ -520,8 +511,8 @@ body {
 }
 
 .passMotion {
-  -webkit-animation: pass 0.7s ease forwards 0.8s;
-          animation: pass 0.7s ease forwards 0.8s;
+  -webkit-animation: pass 0.7s ease forwards 0.8s infinite;
+          animation: pass 0.7s ease forwards 0.8s infinite;
 }
 
 @-webkit-keyframes pass {
@@ -530,6 +521,7 @@ body {
     stroke-dasharray: 24px;
   }
   to {
+    stroke: #27C2B9;
     stroke-dashoffset: 0;
     stroke-dasharray: 24px;
   }
@@ -541,6 +533,7 @@ body {
     stroke-dasharray: 24px;
   }
   to {
+    stroke: #27C2B9;
     stroke-dashoffset: 0;
     stroke-dasharray: 24px;
   }
@@ -635,6 +628,28 @@ body {
 #svg1SuccessPath {
   stroke-dashoffset: 32px;
   stroke-dasharray: 30px;
+}
+
+#bug {
+  width: 1188px;
+  position: absolute;
+  margin-left: -24px;
+}
+
+.bugMotion svg path {
+  -webkit-animation: pass 4s linear forwards 0.8s infinite;
+          animation: pass 4s linear forwards 0.8s infinite;
+}
+
+@keyframes pass {
+  from {
+    stroke-dashoffset: 40px;
+    stroke-dasharray: 6px;
+  }
+  to {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 6px;
+  }
 }
 
 /*********** motion ************/
