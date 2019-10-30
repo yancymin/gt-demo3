@@ -206,7 +206,7 @@ function prList4Enter() {
   })
   TweenMax.set(svg2, {
     transformOrigin: 'center center',
-    transform: 'scale(0.82) translateY(30px)'
+    transform: 'scale(0.82) translateY(40px)'
   })
   TweenMax.set(svg3, {
     transformOrigin: 'left center',
@@ -243,27 +243,27 @@ function prList4Leave() {
   document.getElementById('bug').classList.remove('bugMotion')
 }
 
-svg1.addEventListener('mouseenter', () => {
-  prList1Enter()
-  prList[0].classList.add('cardsHover')
-})
-svg1.addEventListener('mouseleave', () => {
-  prList1Leave()
-  prList[0].classList.remove('cardsHover')
-})
-svg2.addEventListener('mouseenter', () => {
-  prList2Enter()
-  prList[1].classList.add('cardsHover')
-})
-svg2.addEventListener('mouseleave', () => {
-  prList2Leave()
-  prList[1].classList.remove('cardsHover')
-})
-svg3.addEventListener('mouseenter', () => {
-  prList3Enter()
-  prList[2].classList.add('cardsHover')
-})
-svg3.addEventListener('mouseleave', () => {
-  prList3Leave()
-  prList[2].classList.remove('cardsHover')
-})
+// svg1.addEventListener('mouseenter', () => {
+//   prList1Enter()
+//   prList[0].classList.add('cardsHover')
+// })
+// svg1.addEventListener('mouseleave', () => {
+//   prList1Leave()
+//   prList[0].classList.remove('cardsHover')
+// })
+// svg2.addEventListener('mouseenter', () => {
+//   prList2Enter()
+//   prList[1].classList.add('cardsHover')
+// })
+// svg2.addEventListener('mouseleave', () => {
+//   prList2Leave()
+//   prList[1].classList.remove('cardsHover')
+// }).
+// svg3.addEventListener('mouseenter', () => {
+//   prList3Enter()
+//   prList[2].classList.add('cardsHover')
+// })
+// svg3.addEventListener('mouseleave', () => {
+//   prList3Leave()
+//   prList[2].classList.remove('cardsHover')
+// })

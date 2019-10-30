@@ -23,7 +23,7 @@ body {
 .container {
   width: 100%;
   position: absolute;
-  top: 977px;
+  top: 716px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -209,7 +209,6 @@ body {
 }
 
 .container .pr-list .pr:active {
-  opacity: 0.97;
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -219,6 +218,7 @@ body {
 .container .pr-list .pr:active::after {
   -webkit-box-shadow: 0 0 0 #B3B6D1, 0 0 0 rgba(179, 182, 209, 0);
           box-shadow: 0 0 0 #B3B6D1, 0 0 0 rgba(179, 182, 209, 0);
+  background-color: #EDF1F8ba;
 }
 
 .container .pr-list .pr .pr-2 {
@@ -631,6 +631,7 @@ body {
 }
 
 #bug {
+  opacity: 0;
   width: 1188px;
   position: absolute;
   margin-top: 20px;

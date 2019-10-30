@@ -25,7 +25,7 @@ body {
 .container {
     width: 100%;
     position: absolute;
-    top: 977px;
+    top: 716px;
 
     @include flex() {
         flex-direction: column;
@@ -175,12 +175,13 @@ body {
             }
 
             &:active {
-                opacity: 0.97;
+                // opacity: 0.97;
                 transform: scale(0.95);
                 transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
                 &::after {
                     box-shadow: 0 0 0 #B3B6D1, 0 0 0 rgba(179, 182, 209, 0);
+                    background-color: #EDF1F8ba;
                 }
             }
 
@@ -477,6 +478,7 @@ body {
 }
 
 #bug {
+    opacity: 0;
     width: 1188px;
     position: absolute;
     margin-top: 20px;
