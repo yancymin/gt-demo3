@@ -14,9 +14,9 @@ var tl5 = new TimelineMax()
 var duration = 0.15
 var hidden = function(svgA, svgB) {
   TweenMax.set([svgA, svgB], {
-    opacity: 0.4,
-    scale: 0.95,
-    filter: 'blur(8px)'
+    opacity: 0.5,
+    scale: 0.93,
+    filter: 'blur(6px)'
   })
 }
 
@@ -75,9 +75,16 @@ function prList1Enter() {
       },
       '+=0.08'
     )
-    .to([svg2, svg3, '#success', text, '#svgBtn', '#textBg'], duration, {
-      delay: 0.5
-    })
+    .to('#svg1SuccessPath', 0, {
+      clearProps: 'all'
+    },'+==0.2')
+    .to(
+      [svg2, svg3, '#success', text, '#svgBtn', '#textBg'],
+      duration,
+      {
+        delay: 0.5
+      }
+    )
 
   tl.repeat(20)
 }
@@ -133,6 +140,9 @@ function prList3Enter() {
     boxShadow: '-20px 10px 14px rgba(71, 84, 119, 0.2)'
   })
 
+  tl4.restart()
+  tl4.repeat(100)
+
   tl4
     .to('#scaner', duration + 1.6, {
       y: 240
@@ -154,8 +164,9 @@ function prList3Enter() {
       },
       '-=1'
     )
-
-  tl4.repeat(100)
+    .to('#pass', 0, {
+      clearProps: 'all'
+    })
 
   for (var i = 0; i <= dots.length; i++) {
     var j = Math.floor(Math.random() * i)
@@ -164,11 +175,12 @@ function prList3Enter() {
 }
 
 function prList3Leave() {
+  tl4.clear()
+  //   tl4.repeat(false)
+
   TweenMax.set([svg1, svg2, svg3, '#scaner', '#pass', '#passBg'], {
     clearProps: 'all'
   })
-  tl4.repeat(false)
-  tl4.clear()
 
   TweenMax.set('#scaner', {
     transformOrigin: 'center',
@@ -184,70 +196,74 @@ prList[3].addEventListener('mouseenter', prList4Enter)
 prList[3].addEventListener('mouseleave', prList4Leave)
 
 TweenMax.set('#bug', {
-    scale:  0.9,
-    opacity: 0
+  scale: 0.8,
+  opacity: 0
 })
 function prList4Enter() {
   TweenMax.set(svg1, {
     transformOrigin: 'right center',
-    transform: 'scale(0.8) translateX(70px) translateY(70px)'
+    transform: 'scale(0.8) translateX(70px) translateY(30px)'
   })
   TweenMax.set(svg2, {
     transformOrigin: 'center center',
-    transform: 'scale(0.8) translateY(40px)'
+    transform: 'scale(0.82) translateY(30px)'
   })
   TweenMax.set(svg3, {
     transformOrigin: 'left center',
-    transform: 'scale(0.75) translateX(-110px) translateY(70px)'
+    transform: 'scale(0.75) translateX(-110px) translateY(30px)'
   })
 
-
-
-  tl5.to('#bug',duration+0.2,{
-      scale: 1,
-      opacity: 1 ,
-      ease: Power1.easeIn
+  tl5.to('#bug', duration + 0.2, {
+    scale: 0.88,
+    opacity: 1,
+    ease: Power1.easeIn
   })
 
+  var svgs = document.querySelectorAll('.bugPath')
+
+  svgs[0].classList.add('bugMotion-1')
+  svgs[3].classList.add('bugMotion-2')
+  svgs[4].classList.add('bugMotion-3')
+  svgs[1].classList.add('bugMotion-4')
+  svgs[2].classList.add('bugMotion-5')
   document.getElementById('wave').classList.add('waveShow')
-  document.getElementById('bug').classList.add('bugMotion')
 }
 
 function prList4Leave() {
-  TweenMax.set([svg1, svg2, svg3,'#bug'], {
+  TweenMax.set([svg1, svg2, svg3, '#bug'], {
     clearProps: 'all'
   })
 
   TweenMax.set('#bug', {
-    scale:  0.9,
+    scale: 0.8,
     opacity: 0
-})
-  
+  })
+
   document.getElementById('wave').classList.remove('waveShow')
   document.getElementById('bug').classList.remove('bugMotion')
 }
 
-// svg1.addEventListener('mouseenter', () => {
-//   prList1Enter()
-//   prList[0].classList.add('cardsHover')
-// })
-// svg1.addEventListener('mouseleave', () => {
-//   prList1Leave()
-//   prList[0].classList.remove('cardsHover')
-// })
-// svg2.addEventListener('mouseenter', () => {
-//   prList2Enter()
-//   prList[1].classList.add('cardsHover')
-// })
-// svg2.addEventListener('mouseleave', () => {
-//   prList2Leave()
-//   prList[1].classList.remove('cardsHover')
-// })
-// svg3.addEventListener('mouseenter', () => {
-//   prList3Enter()
-//   prList[2].classList.add('cardsHover')
-// })
-// svg3.addEventListener('mouseleave', () => {
-//   prList3Leave()
-//   prList[2].classList.remove('cardsHover')
-// })
+svg1.addEventListener('mouseenter', () => {
+  prList1Enter()
+  prList[0].classList.add('cardsHover')
+})
+svg1.addEventListener('mouseleave', () => {
+  prList1Leave()
+  prList[0].classList.remove('cardsHover')
+})
+svg2.addEventListener('mouseenter', () => {
+  prList2Enter()
+  prList[1].classList.add('cardsHover')
+})
+svg2.addEventListener('mouseleave', () => {
+  prList2Leave()
+  prList[1].classList.remove('cardsHover')
+})
+svg3.addEventListener('mouseenter', () => {
+  prList3Enter()
+  prList[2].classList.add('cardsHover')
+})
+svg3.addEventListener('mouseleave', () => {
+  prList3Leave()
+  prList[2].classList.remove('cardsHover')
+})

@@ -586,32 +586,32 @@ body {
 @-webkit-keyframes waveMotion {
   0% {
     opacity: 0;
-    -webkit-transform: scale(1.3) translateY(50px);
-            transform: scale(1.3) translateY(50px);
+    -webkit-transform: scale(1.25) translateY(50px);
+            transform: scale(1.25) translateY(50px);
   }
   40% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    -webkit-transform: scale(1.5) translateY(50px);
-            transform: scale(1.5) translateY(50px);
+    -webkit-transform: scale(1.44) translateY(50px);
+            transform: scale(1.44) translateY(50px);
   }
 }
 
 @keyframes waveMotion {
   0% {
     opacity: 0;
-    -webkit-transform: scale(1.3) translateY(50px);
-            transform: scale(1.3) translateY(50px);
+    -webkit-transform: scale(1.25) translateY(50px);
+            transform: scale(1.25) translateY(50px);
   }
   40% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    -webkit-transform: scale(1.5) translateY(50px);
-            transform: scale(1.5) translateY(50px);
+    -webkit-transform: scale(1.44) translateY(50px);
+            transform: scale(1.44) translateY(50px);
   }
 }
 
@@ -633,23 +633,82 @@ body {
 #bug {
   width: 1188px;
   position: absolute;
-  margin-left: -24px;
+  margin-top: 20px;
+  margin-left: -30px;
 }
 
-.bugMotion svg path {
-  -webkit-animation: pass 4s linear forwards 0.8s infinite;
-          animation: pass 4s linear forwards 0.8s infinite;
+#bug svg path {
+  -webkit-transform-origin: center;
+          transform-origin: center;
 }
 
-@keyframes pass {
-  from {
-    stroke-dashoffset: 40px;
-    stroke-dasharray: 6px;
+@-webkit-keyframes bugMove {
+  0%, 100% {
+    -webkit-transform: translateX(3px) scale(1);
+            transform: translateX(3px) scale(1);
   }
-  to {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 6px;
+  35%, 70% {
+    -webkit-transform: translateX(-3px) scale(0.95);
+            transform: translateX(-3px) scale(0.95);
   }
+}
+
+@keyframes bugMove {
+  0%, 100% {
+    -webkit-transform: translateX(3px) scale(1);
+            transform: translateX(3px) scale(1);
+  }
+  35%, 70% {
+    -webkit-transform: translateX(-3px) scale(0.95);
+            transform: translateX(-3px) scale(0.95);
+  }
+}
+
+@-webkit-keyframes bugMove2 {
+  0%, 100% {
+    -webkit-transform: translateY(3px) scale(1);
+            transform: translateY(3px) scale(1);
+  }
+  35%, 70% {
+    -webkit-transform: translateY(-3px) scale(0.95);
+            transform: translateY(-3px) scale(0.95);
+  }
+}
+
+@keyframes bugMove2 {
+  0%, 100% {
+    -webkit-transform: translateY(3px) scale(1);
+            transform: translateY(3px) scale(1);
+  }
+  35%, 70% {
+    -webkit-transform: translateY(-3px) scale(0.95);
+            transform: translateY(-3px) scale(0.95);
+  }
+}
+
+.bugMotion-1 {
+  -webkit-animation: bugMove 2s linear infinite 0.15s both;
+          animation: bugMove 2s linear infinite 0.15s both;
+}
+
+.bugMotion-2 {
+  -webkit-animation: bugMove 2s linear  infinite both;
+          animation: bugMove 2s linear  infinite both;
+}
+
+.bugMotion-3 {
+  -webkit-animation: bugMove 2s linear  infinite 0.8s both;
+          animation: bugMove 2s linear  infinite 0.8s both;
+}
+
+.bugMotion-4 {
+  -webkit-animation: bugMove2 2s linear  infinite both;
+          animation: bugMove2 2s linear  infinite both;
+}
+
+.bugMotion-5 {
+  -webkit-animation: bugMove2 2s linear  infinite 0.8s both;
+          animation: bugMove2 2s linear  infinite 0.8s both;
 }
 
 /*********** motion ************/
